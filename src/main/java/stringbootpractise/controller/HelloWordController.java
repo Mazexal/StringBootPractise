@@ -1,5 +1,6 @@
 package stringbootpractise.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.web.bind.annotation.*;
 import stringbootpractise.models.UserModel;
 
@@ -19,6 +20,14 @@ public class HelloWordController {
         userModel.setUserId(1000);
         userModel.setUserName("nick");
         return userModel;
+    }
+    
+    @RequestMapping("/getFastJson")
+    public String getFastJson(){
+        UserModel userModel=new UserModel();
+        userModel.setUserId(1000);
+        userModel.setUserName("nick");
+        return JSONObject.toJSONString(userModel);
     }
 
 
