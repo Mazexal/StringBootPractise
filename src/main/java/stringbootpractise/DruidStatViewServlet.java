@@ -5,6 +5,7 @@ package stringbootpractise;
  */
 
 import javax.servlet.annotation.*;
+
 import com.alibaba.druid.support.http.StatViewServlet;
 
 
@@ -20,4 +21,5 @@ import com.alibaba.druid.support.http.StatViewServlet;
 
 
 public class DruidStatViewServlet extends StatViewServlet {
+    private static final long serialVersionUID = 1L;
 }
