@@ -31,13 +31,22 @@ public class DruidConfiguration {
     }
 
     @Bean
-    public FilterRegistrationBean druidStatFilter2(){
+    public FilterRegistrationBean druidStatFilter2() {
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean(new WebStatFilter());
         //添加过滤规则.
         filterRegistrationBean.addUrlPatterns("/*");
         //添加不需要忽略的格式信息.
-        filterRegistrationBean.addInitParameter("exclusions","*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid2/*");
+        filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid2/*");
+
         return filterRegistrationBean;
+    }
+
+    @Bean
+    public ServletRegistrationBean DruidStatViewServle3() {
+        ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(new StatViewServlet(), "/druid2/*");
+        servletRegistrationBean.addInitParameter("allow", "127.0.0.1");
+        servletRegistrationBean.addInitParameter("deny", "192.168.1.73");
+        return servletRegistrationBean;
     }
 
 }
